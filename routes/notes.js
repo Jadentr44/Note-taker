@@ -22,16 +22,20 @@ note.post('/', (req, res) =>{
 );
 
 note.delete('/:id', (req, res) =>{
-    let deleted = req.params.id
+    let deleted = JSON.parse(req.params.id)
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
         console.error(err);
         return;
       }
       let list = JSON.parse(data)
+      newList = list.filter(task =>{
+        if(task.title != deleted.title && task.text != deleted.text){
+          return task
+        }
+      })
       
-      // let newList = list.filter(task => task != deleted)
-      console.log(deleted)
+      console.log("new list",newList);
       res.json("still working on this")
     });
 }

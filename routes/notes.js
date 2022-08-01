@@ -30,6 +30,9 @@ note.delete('/:id', (req, res) =>{
       }
       let list = JSON.parse(data)
       
+      // let newList = list.filter(task => task != deleted)
+      console.log(deleted)
+      res.json("still working on this")
     });
 }
 );

@@ -3,7 +3,7 @@ const path = require('path')
 const apiRoutes = require('./routes/index')
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 //middleware
 app.use(express.json());

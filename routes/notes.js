@@ -1,9 +1,14 @@
-
-
 const note = require('express').Router();
 
-note.get('/', (req, res) =>
-res.sendFile(path.join(__dirname, 'public/index.html'))
+note.get('/', (req, res) =>{
+  console.log("user get notes");
+  res.json([
+    {
+        "title":"Test Title",
+        "text":"Test text"
+    }
+]);
+}
 );
 
 module.exports = note

@@ -1,6 +1,6 @@
 const note = require('express').Router();
 const fs = require('fs');
-const {readFromFile,readAndAppend} = require('../helpers/fs')
+const {readFromFile,readAndAppend,writeToFile} = require('../helpers/fs')
 
 note.get('/', (req, res) =>{
   console.log("user get notes");
@@ -34,8 +34,8 @@ note.delete('/:id', (req, res) =>{
           return task
         }
       })
-      
-      console.log("new list",newList);
+      console.log(newList)
+      writeToFile('./db/db.json',newList)
       res.json("still working on this")
     });
 }

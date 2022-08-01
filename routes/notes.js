@@ -1,4 +1,5 @@
 const note = require('express').Router();
+const fs = require('fs');
 const {readFromFile,readAndAppend} = require('../helpers/fs')
 
 note.get('/', (req, res) =>{
@@ -17,6 +18,19 @@ note.post('/', (req, res) =>{
   }else{
     res.error('error in adding tip')
   }
+}
+);
+
+note.delete('/:id', (req, res) =>{
+    let deleted = req.params.id
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      let list = JSON.parse(data)
+      
+    });
 }
 );
 

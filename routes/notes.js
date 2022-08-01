@@ -1,13 +1,9 @@
 const note = require('express').Router();
+const {readFromFile} = require('../helpers/fs')
 
 note.get('/', (req, res) =>{
   console.log("user get notes");
-  res.json([
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
-]);
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 }
 );
 
